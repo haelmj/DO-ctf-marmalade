@@ -39,11 +39,9 @@ def home():
         dict = Dictionary(word)
         print(dict.meanings())
         definition = dict.meanings()
-        bad_chars = ".#;[]"
-        # if any(char in bad_chars for char in word):
-        #     abort(403)
-        for char in word:
-            if char in bad_chars: print(char) 
+        bad_chars = "#;[]"
+        if any(char in bad_chars for char in word):
+            abort(403)
         return render_template_string(template, word=word,definitions=definition)
     return render_template('index.html', word="", definition="")
 
